@@ -1,0 +1,197 @@
+package com.callanna.viewlibrary.web;
+
+import android.content.Context;
+import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+/**
+ * Created by Callanna on 2017/6/12.
+ * Android WebView常见问题及解决方案汇总
+ * http://blog.csdn.net/t12x3456/article/details/13769731
+ */
+
+public class FWebView extends WebView {
+    private WiifiReceiver myReceiver;
+    private String ToURL = "";
+    public String currentTitle = "";
+    public FWebView(Context context) {
+        this(context, null);
+    }
+
+    public FWebView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public FWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initAttribute();
+    }
+
+    private void initAttribute() {
+        setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        //屏蔽长按导致出现复制粘贴
+        setFocusable(true);
+        setFocusableInTouchMode(true);
+        //缓存设置
+        getSettings().setDomStorageEnabled(true);
+        getSettings().setAppCacheEnabled(true);
+        getSettings().setAppCachePath(getContext().getCacheDir().getAbsolutePath());
+        getSettings().setDatabaseEnabled(true);
+        getSettings().setDatabasePath(getContext().getCacheDir().getAbsolutePath());
+        getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        getSettings().setDefaultTextEncodingName("UTF-8");//默认编码格式
+        getSettings().setJavaScriptEnabled(true);//支持JavaScript
+        getSettings().setSupportZoom(false);
+        getSettings().setAllowFileAccess(true);
+        // 不允许缩放
+        if (android.os.Build.VERSION.SDK_INT >= 11) {
+            getSettings().setDisplayZoomControls(false);
+        }
+        getSettings().setBuiltInZoomControls(false);
+        // 自动加载图片
+        getSettings().setLoadsImagesAutomatically(true);
+        //视图自适应
+        getSettings().setUseWideViewPort(true);
+        getSettings().setLoadWithOverviewMode(true);
+        getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+        setWebViewClient(new FWebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                for(ILoadingStateListener loadingStateListener: loadingStateListeners) {
+                    if (loadingStateListener != null) {
+                        loadingStateListener.onPageFinished(view, url);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                for(ILoadingStateListener loadingStateListener: loadingStateListeners) {
+                    if (loadingStateListener != null) {
+                        loadingStateListener.onPageStarted(view, url, favicon);
+                    }
+                }
+            }
+
+        });
+        setWebChromeClient(new WebChromeClient(){
+
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                for(ILoadingStateListener loadingStateListener: loadingStateListeners) {
+                    if (loadingStateListener != null) {
+                        loadingStateListener.onProgressChanged(view, newProgress);
+                    }
+                }
+            }
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                currentTitle = title;
+            }
+        });
+    }
+
+    public void setToURL(String toURL) {
+        ToURL = toURL;
+        loadUrl(ToURL);
+    }
+
+    public String getOriginalUrl() {
+        return ToURL;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //按下的如果是BACK，同时没有重复
+            Log.d("duanyl", "onKeyDown: goBack");
+            if(canGoBack()) {
+                goBack();
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public String getCurrentTitle() {
+        return currentTitle;
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if(isautoloading)
+            registerWifiReceiver();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if(isautoloading)
+            unregisterWifiReceiver();
+
+    }
+
+    @Override
+    public void destroy() {
+        ((ViewGroup)getParent()).removeView(this);
+        //webview调用destory时,需要先从父容器中移除webview,然后再销毁webview
+        super.destroy();
+    }
+
+    public boolean isautoloading = false;
+    public void setAutoLoadOnNetStateChanged(boolean flag ){
+        isautoloading = flag;
+        if (isautoloading){
+            registerWifiReceiver();
+        }else{
+            unregisterWifiReceiver();
+        }
+    }
+
+    public void registerWifiReceiver(){
+        IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        myReceiver=new WiifiReceiver();
+        myReceiver.registerWifiChangeeListener(new WiifiReceiver.WiFiStateChangedListener() {
+            @Override
+            public void onChanged(boolean isConnect, int sgal) {
+                Log.d("duanyl", "onChanged: "+isConnect + ToURL);
+                loadUrl(ToURL);
+            }
+        });
+        getContext().registerReceiver(myReceiver, filter);
+    }
+    public void unregisterWifiReceiver(){
+        if(myReceiver != null){
+            getContext().unregisterReceiver(myReceiver);
+        }
+    }
+    private CopyOnWriteArrayList<ILoadingStateListener> loadingStateListeners = new CopyOnWriteArrayList<>() ;
+
+    public void addLoadingStateListener(ILoadingStateListener loadingStateListener) {
+        this.loadingStateListeners.add(loadingStateListener);
+    }
+
+    public interface ILoadingStateListener{
+        void onPageStarted(WebView view, String url, Bitmap favicon);
+        void onPageFinished(WebView view, String url);
+        void onProgressChanged(WebView view, int newProgress) ;
+   }
+}
