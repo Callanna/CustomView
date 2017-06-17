@@ -6,15 +6,21 @@
 
 * [2.地址联动选择AddressPicker]()
 
-# Versions
+## Download
 
-* 1.0 Initial release
+You can copy the ProgressWheel.java (in the library module) and the attrs.xml content into your project. Or you can get the binaries from Maven central by adding in your build.gradle dependencies:
 
-* 1.1 WebView的封装，自定义地址联动选择AddressPicker.
+```compile 'com.cvlib:cvlib:1.0.1'```
+
+## Versions
+
+* 1.0.0 Initial release
+
+* 1.0.1 WebView的封装，自定义地址联动选择AddressPicker.
  
  
 
-# License
+## License
 
 Copyright 2017 Callanna
 
@@ -29,3 +35,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+ 
+ 
