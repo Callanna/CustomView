@@ -1,1 +1,1 @@
-include ':app', ':viewlibrary'
+include ':app', ':cvlib'

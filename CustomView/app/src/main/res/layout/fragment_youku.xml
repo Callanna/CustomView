@@ -3,11 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.callanna.viewlibrary.web.PullRefreshWebView
+    <com.cvlib.web.PullRefreshWebView
         android:id="@+id/webview_youku"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-    </com.callanna.viewlibrary.web.PullRefreshWebView>
+    </com.cvlib.web.PullRefreshWebView>
 </LinearLayout>

@@ -11,12 +11,14 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.CompoundButton;
 
 import com.callanna.customview.R;
-import com.callanna.viewlibrary.CustomIndicator;
-import com.callanna.viewlibrary.util.NetUtils;
+import com.callanna.customview.webview.fg.JSFragment;
+import com.callanna.customview.webview.fg.WeiXinFragment;
+import com.callanna.customview.webview.fg.YoukuFragment;
+import com.cvlib.CustomIndicator;
+import com.cvlib.util.NetUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,32 +40,16 @@ public class WebACtivity extends AppCompatActivity {
         setContentView(R.layout.activity_web);
         switch_wifi = (SwitchCompat) findViewById(R.id.switch_wifi);
         switch_wifi.setChecked(NetUtils.isWifiEnable(this));
-        switch_wifi.setOnTouchListener(new View.OnTouchListener() {
+        switch_wifi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_UP){
-                    if (NetUtils.isWifiEnable(WebACtivity.this)){
-                        switch_wifi.setChecked(false);
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                NetUtils.closeWifi(WebACtivity.this);
-                            }
-                        }).start();
-                    }else{
-                        switch_wifi.setChecked(true);
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                NetUtils.openWifi(WebACtivity.this);
-                            }
-                        }).start();
-                    }
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    NetUtils.openWifi(WebACtivity.this);
+                }else{
+                    NetUtils.closeWifi(WebACtivity.this);
                 }
-                return false;
             }
         });
-
         initFragmentData();
         initViewPager();
     }
@@ -79,7 +65,7 @@ public class WebACtivity extends AppCompatActivity {
     }
 
     private void initFragmentData() {
-        mFragmentsLists.add(RecipeFragment.newInstence());
+        mFragmentsLists.add(JSFragment.newInstence());
         mFragmentsLists.add(YoukuFragment.newInstence());
         mFragmentsLists.add(WeiXinFragment.newInstence());
 

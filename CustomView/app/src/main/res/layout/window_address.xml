@@ -37,7 +37,7 @@
                 android:id="@+id/tv_sure"
                 android:text="确定" />
         </RelativeLayout>
-        <com.callanna.viewlibrary.address.AddressPicker
+        <com.cvlib.address.AddressPicker
             android:layout_below="@+id/top"
             android:id="@+id/win_address"
             android:layout_width="match_parent"
@@ -51,7 +51,7 @@
             app:aSelectedTextSize="22sp"
             app:aUnitHeight="50dp">
 
-        </com.callanna.viewlibrary.address.AddressPicker>
+        </com.cvlib.address.AddressPicker>
     </RelativeLayout>
 
 </LinearLayout>

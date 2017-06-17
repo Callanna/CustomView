@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.callanna.customview.R;
-import com.callanna.viewlibrary.WPopupWindow;
-import com.callanna.viewlibrary.address.AddressPicker;
+import com.cvlib.WPopupWindow;
+import com.cvlib.address.AddressPicker;
 
 /**
  * Created by Callanna on 2017/6/14.

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.callanna.viewlibrary.address.AddressPicker
+    <com.cvlib.address.AddressPicker
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -17,7 +17,7 @@
         app:aSelectedTextSize="22sp"
         app:aUnitHeight="40dp">
 
-    </com.callanna.viewlibrary.address.AddressPicker>
+    </com.cvlib.address.AddressPicker>
     <TextView
         android:id="@+id/text_address"
         android:gravity="center"
