@@ -37,10 +37,10 @@ public class NetUtils {
         }
     }
     /**
-     * 判断网络是否连接
+     * To determine whether a network connection
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return isConnected
      */
     public static boolean isConnected(Context context) {
 
@@ -60,7 +60,7 @@ public class NetUtils {
     }
 
     /**
-     * 判断是否是wifi连接
+     * Determine whether the wifi connection
      */
     public static boolean isWifi(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
@@ -76,7 +76,7 @@ public class NetUtils {
     }
 
     /**
-     * 打开网络设置界面
+     * Open the network Settings interface
      */
     public static void openSetting(Activity activity) {
         activity.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));//进入无线网络配置界面

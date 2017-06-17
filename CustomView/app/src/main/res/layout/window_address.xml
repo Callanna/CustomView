@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:gravity="bottom"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/top">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textSize="18sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/tv_cancle"
+                android:text="取消" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/tv_sure"
+                android:text="确定" />
+        </RelativeLayout>
+        <com.callanna.viewlibrary.address.AddressPicker
+            android:layout_below="@+id/top"
+            android:id="@+id/win_address"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:aItemNumber="3"
+            app:aLineColor="#ff5789DC"
+            app:aMaskHeight="32dp"
+            app:aNormalTextColor="#777"
+            app:aNormalTextSize="14sp"
+            app:aSelectedTextColor="#ff000000"
+            app:aSelectedTextSize="22sp"
+            app:aUnitHeight="50dp">
+
+        </com.callanna.viewlibrary.address.AddressPicker>
+    </RelativeLayout>
+
+</LinearLayout>

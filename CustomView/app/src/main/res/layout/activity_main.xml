@@ -11,5 +11,9 @@
         android:text="WebView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
+    <Button
+        android:id="@+id/btn_address"
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

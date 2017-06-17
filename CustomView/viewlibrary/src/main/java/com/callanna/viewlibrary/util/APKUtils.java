@@ -18,16 +18,14 @@ import java.util.List;
 public class APKUtils {
 
     /**
-     * 安装应用程序的mimetype
+     * Install the application  mimetype
      */
     public static final String INSTALL_MIMETYPE = "application/vnd.android.package-archive";
     /**
      *
-     * @description 调用第三方应用
-     * @author Joe
-     * @param context
-     * @param packageName
-     * @return
+     * @param context context
+     * @param packageName packageName
+     * @return f
      */
     public static boolean startOtherApp(Context context, String packageName) {
         PackageManager packageManager = context.getPackageManager();
@@ -42,30 +40,28 @@ public class APKUtils {
     }
 
     /**
-     * 是否安装了某个应用
-     *
-     * @author YOLANDA
-     * @param packageName
-     * @return
+     * An application is installed
+     * @param context context
+     * @param packageName packageName
+     * @return f
      */
     public static boolean isAInstallPackage(Context context,String packageName) {
-        final PackageManager packageManager = context.getApplicationContext().getPackageManager();// 获取packagemanager
-        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
-        List<String> packages = new ArrayList<String>();// 用于存储所有已安装程序的包名
+        final PackageManager packageManager = context.getApplicationContext().getPackageManager();// get packagemanager
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);// Access to all installed the package information of the program
+        List<String> packages = new ArrayList<String>();// Used to store all installed the package name of the program
         if (packageInfos != null) {
             for (PackageInfo packageInfo : packageInfos) {
                 packages.add(packageInfo.packageName);
             }
         }
-        return packages.contains(packageName);// 判断pName中是否有目标程序的包名，有TRUE，没有FALSE
+        return packages.contains(packageName);// Whether in the pName targeted application package name, is TRUE, not FALSE
     }
 
     /**
-     * 获得本应用版本号
+     * Get the application version number
      *
-     * @author YOLANDA
-     * @param context
-     * @return 返回版本号
+     * @param context context
+     * @return VersionCode
      */
     public static int getMYVersionCode(Context context) {
         int versionCode = 0;
@@ -78,11 +74,10 @@ public class APKUtils {
     }
 
     /**
-     * 获得应用版本名称
+     * getMYVersionName
      *
-     * @author YOLANDA
-     * @param context
-     * @return
+     * @param context context
+     * @return versionName
      */
     public static String getMYVersionName(Context context) {
         String versionName = "";
@@ -95,11 +90,9 @@ public class APKUtils {
     }
 
     /**
-     * 启动安装APK
-     *
-     * @author YOLANDA
-     * @param path
-     * @return
+     * installApkByPath
+     *@param context context
+     * @param path path
      */
     public static void installApkByPath(Context context,String path) {
         try {
@@ -115,11 +108,10 @@ public class APKUtils {
     }
 
     /**
-     * 启动卸载
+     * uninstallApkByPackage
      *
-     * @author YOLANDA
-     * @param context
-     * @param oldpackage
+     * @param context context
+     * @param oldpackage oldpackage
      */
     public static void uninstallApkByPackage(Context context,String oldpackage) {
         try {
@@ -131,12 +123,10 @@ public class APKUtils {
     }
 
     /**
-     * 检查本地APK是否比安装的应用新
-     *
-     * @author YOLANDA
-     * @param apkPath
-     *            本地APK完整路径
-     * @return
+     * Check whether the local APK is than the application of the new installation
+     *@param context context
+     * @param apkPath  The full path to the local APK
+     * @return f
      */
     public static boolean checkIsNewThanInstallApp(Context context,String apkPath) {
         ApplicationInfo apkInfo = getAppInfoByPath(context,apkPath);
@@ -150,25 +140,22 @@ public class APKUtils {
     }
 
     /**
-     * 按本地APK路径获取包信息，包含版本名称和版本号
-     *
-     * @author YOLANDA
-     * @param context
-     * @param apkPath
-     * @return
+     * According to the local APK path for package information, including name and version number version
+     * @param context context
+     * @param apkPath apkPath
+     * @return PackageInfo
      */
     public static PackageInfo getPackageInfoByPath(Context context,String apkPath) {
         return context.getApplicationContext().getPackageManager().getPackageArchiveInfo(apkPath, PackageManager.GET_ACTIVITIES);
     }
 
     /**
-     * 按已安装程序报名获取包信息
+     * getPackageInfoByPackage
      *
-     * @author YOLANDA
-     * @param context
-     * @param packageName
-     *            已安装程序的包名
-     * @return
+     * @param context context
+     * @param packageName packageName
+     *
+     * @return PackageInfo
      */
     public static PackageInfo getPackageInfoByPackage(Context context,String packageName) {
         PackageInfo packageInfo = null;
@@ -181,14 +168,13 @@ public class APKUtils {
     }
 
     /**
-     * 按已安装程序报名读取应用信息
+     * getAppInfoByPackageName
      *
-     * @author YOLANDA
-     * @param context
-     *            上下文
-     * @param packageName
-     *            包名
-     * @return
+     * @param context context
+     *
+     * @param packageName packageName
+     *
+     * @return ApplicationInfo
      */
     public static ApplicationInfo getAppInfoByPackageName(Context context,String packageName) {
         ApplicationInfo info = null;
@@ -200,11 +186,10 @@ public class APKUtils {
     }
 
     /**
-     * 按本地APK路径读取APK应用信息
-     *
-     * @author YOLANDA
-     *   apkPath         APK完整路径
-     * @return
+     * getAppInfoByPath
+     * @param context context
+     * @param apkPath apkPath
+     * @return ApplicationInfo
      */
     public static ApplicationInfo getAppInfoByPath(Context context,String apkPath) {
         PackageInfo info = getPackageInfoByPath(context,apkPath);
@@ -216,16 +201,15 @@ public class APKUtils {
     }
 
     /**
-     * 按报名检查某个应用是否安装
+     * checkAppInstalledByPackageName
      *
-     * @author YOLANDA
-     * @param context
-     * @param packageName
-     *            包名
-     * @return
+     * @param context context
+     * @param packageName packageName
+     *
+     * @return f
      */
     public static boolean checkAppInstalledByPackageName(Context context,String packageName) {
-        // 获取所有已安装程序的包信息
+
         List<PackageInfo> pinfo = context.getApplicationContext().getPackageManager().getInstalledPackages(0);
         for (int i = 0; i < pinfo.size(); i++) {
             if (pinfo.get(i).packageName.equalsIgnoreCase(packageName))
@@ -235,11 +219,10 @@ public class APKUtils {
     }
 
     /**
-     * 按本地APK完整路径检查应用是否安装
-     *
-     * @author YOLANDA
-     *            本地APK完整路径
-     * @return
+     * checkAppInstalledByPath
+     * @param context  context
+     * @param apkPath apkPath
+     * @return f
      */
     public static boolean checkAppInstalledByPath(Context context,String apkPath) {
         ApplicationInfo locationInfo = getAppInfoByPath(context,apkPath);

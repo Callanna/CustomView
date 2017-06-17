@@ -22,7 +22,7 @@ import static com.callanna.customview.R.id.webview_youku;
  * Created by Callanna on 2017/6/13.
  */
 
-public class YoukuFragment2 extends Fragment {
+public class YoukuFragment extends Fragment {
     PullRefreshWebView fWebView;
     View view;
     @Nullable
@@ -69,7 +69,7 @@ public class YoukuFragment2 extends Fragment {
     }
 
     public static Fragment newInstence(){
-        Fragment fragment = new YoukuFragment2();
+        Fragment fragment = new YoukuFragment();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;

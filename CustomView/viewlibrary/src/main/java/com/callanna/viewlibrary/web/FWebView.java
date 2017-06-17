@@ -17,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Callanna on 2017/6/12.
- * Android WebView常见问题及解决方案汇总
+ * Android
  * http://blog.csdn.net/t12x3456/article/details/13769731
  */
 
@@ -40,10 +40,9 @@ public class FWebView extends WebView {
 
     private void initAttribute() {
         setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        //屏蔽长按导致出现复制粘贴
         setFocusable(true);
         setFocusableInTouchMode(true);
-        //缓存设置
+        //Cache Settings
         getSettings().setDomStorageEnabled(true);
         getSettings().setAppCacheEnabled(true);
         getSettings().setAppCachePath(getContext().getCacheDir().getAbsolutePath());
@@ -54,14 +53,14 @@ public class FWebView extends WebView {
         getSettings().setJavaScriptEnabled(true);//支持JavaScript
         getSettings().setSupportZoom(false);
         getSettings().setAllowFileAccess(true);
-        // 不允许缩放
+        // Do not allow the scaling
         if (android.os.Build.VERSION.SDK_INT >= 11) {
             getSettings().setDisplayZoomControls(false);
         }
         getSettings().setBuiltInZoomControls(false);
-        // 自动加载图片
+        // Automatic loading pictures
         getSettings().setLoadsImagesAutomatically(true);
-        //视图自适应
+        //View the adaptive
         getSettings().setUseWideViewPort(true);
         getSettings().setLoadWithOverviewMode(true);
         getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
@@ -118,7 +117,8 @@ public class FWebView extends WebView {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //按下的如果是BACK，同时没有重复
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            //Press if it is BACK, at the same time, no repeat
             Log.d("duanyl", "onKeyDown: goBack");
             if(canGoBack()) {
                 goBack();
@@ -152,7 +152,7 @@ public class FWebView extends WebView {
     @Override
     public void destroy() {
         ((ViewGroup)getParent()).removeView(this);
-        //webview调用destory时,需要先从父容器中移除webview,然后再销毁webview
+        // Webview calls to destory, need from the parent container to remove the webview, and then destroy the webview
         super.destroy();
     }
 

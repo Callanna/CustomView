@@ -79,10 +79,10 @@ public class WebACtivity extends AppCompatActivity {
     }
 
     private void initFragmentData() {
+        mFragmentsLists.add(RecipeFragment.newInstence());
+        mFragmentsLists.add(YoukuFragment.newInstence());
+        mFragmentsLists.add(WeiXinFragment.newInstence());
 
-        mFragmentsLists.add(YoukuFragment2.newInstence());
-        mFragmentsLists.add(WeiXinFragment2.newInstence());
-        mFragmentsLists.add(RecipeFragment2.newInstence());
     }
 
     class FragmentAdapter extends FragmentStatePagerAdapter {

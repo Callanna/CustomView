@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.callanna.customview.address.AddressActivity;
 import com.callanna.customview.webview.WebACtivity;
 
 
@@ -21,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 WebACtivity.startActivity(MainActivity.this);
+            }
+        });
+        findViewById(R.id.btn_address).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddressActivity.startActivity(MainActivity.this);
             }
         });
     }

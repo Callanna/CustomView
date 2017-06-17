@@ -19,7 +19,7 @@ import com.callanna.viewlibrary.util.APKUtils;
 
 /**
  * @author YOLANDA
- * @Time May 10, 2015 8:24:25 PM
+ *  May 10, 2015 8:24:25 PM
  */
 public class JsApi {
     public static final String ZHANGCHU_PACKAGE_NAME = "com.gold.palm.kitchen";
@@ -31,10 +31,9 @@ public class JsApi {
         this.deviceId = deviceId;
     }
     /**
-     * 得到终端playerid
+     * get playerid
      *
-     * @return
-     * @author YOLANDA
+     * @return playerId
      */
     @JavascriptInterface
     public String getPlayerId() {
@@ -42,10 +41,9 @@ public class JsApi {
     }
 
     /**
-     * web 显示一个toast
+     * web show a toast
      *
      * @param message show toast text
-     * @author YOLANDA
      */
     @JavascriptInterface
     public void message(String message) {
@@ -56,10 +54,6 @@ public class JsApi {
     }
 
     /**
-     * 调用掌厨APP
-     *
-     * @description
-     * @author Joe
      */
     @JavascriptInterface
     public void startZhangChuApp() {

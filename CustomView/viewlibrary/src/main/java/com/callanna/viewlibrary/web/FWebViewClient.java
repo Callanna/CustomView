@@ -32,7 +32,7 @@ public class FWebViewClient extends WebViewClient {
     }
 
     /**
-     * 加载错误
+     * onReceivedError
      */
     @SuppressWarnings("deprecation")
     @Override
@@ -46,7 +46,7 @@ public class FWebViewClient extends WebViewClient {
     }
 
     /**
-     * 加载错误
+     * onReceivedError
      */
 
     @TargetApi(android.os.Build.VERSION_CODES.M)
@@ -54,7 +54,7 @@ public class FWebViewClient extends WebViewClient {
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
         onReceivedError(view, error.getErrorCode(), error.getDescription().toString(), request.getUrl().toString());
     }
-    //捕获404
+    // 404
     @Override
     public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
         super.onReceivedHttpError(view, request, errorResponse);

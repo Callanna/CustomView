@@ -51,16 +51,43 @@
         <attr name="npv_AlternativeHint" format="reference|string" />
     </declare-styleable>
 
-    <declare-styleable name="SimpleCountDownView">
-        <attr name="time_text_color" format="color" />
-        <attr name="time_text_size" format="dimension" />
-        <attr name="bar_width" format="dimension" />
-        <attr name="bar_color" format="color" />
+    <declare-styleable name="WheelView">
+        <attr name="unitHeight" format="dimension" />
+        <attr name="itemNumber" format="integer"/>
+
+        <attr name="normalTextColor" format="color" />
+        <attr name="normalTextSize" format="dimension" />
+        <attr name="selectedTextColor" format="color" />
+        <attr name="selectedTextSize" format="dimension" />
+
+        <attr name="lineColor" format="color" />
+        <attr name="lineHeight" format="dimension" />
+
+        <attr name="maskHeight" format="dimension"/>
+        <attr name="noEmpty" format="boolean"/>
+        <attr name="isEnable" format="boolean"/>
     </declare-styleable>
+
     <declare-styleable name="RatingBarView">
         <attr name="starImageSize" format="dimension"/>
         <attr name="starCount" format="integer"/>
         <attr name="starEmpty" format="reference"/>
         <attr name="starFill" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SwitchButton">
+        <attr name="statusChecked" format="boolean" />
+        <attr name="statusSrc" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="AddressPicker">
+        <attr name="aUnitHeight" format="dimension" />
+        <attr name="aItemNumber" format="integer"/>
+        <attr name="aNormalTextColor" format="color" />
+        <attr name="aNormalTextSize" format="dimension" />
+        <attr name="aSelectedTextColor" format="color" />
+        <attr name="aSelectedTextSize" format="dimension" />
+        <attr name="aLineColor" format="color" />
+        <attr name="aLineHeight" format="dimension" />
+        <attr name="aMaskHeight" format="dimension"/>
     </declare-styleable>
 </resources>

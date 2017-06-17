@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.callanna.viewlibrary.address.AddressPicker
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:aItemNumber="5"
+        app:aLineColor="#ff5789DC"
+        app:aMaskHeight="32dp"
+        app:aNormalTextColor="#885789DC"
+        app:aNormalTextSize="14sp"
+        app:aSelectedTextColor="#ff5789DC"
+        app:aSelectedTextSize="22sp"
+        app:aUnitHeight="40dp">
+
+    </com.callanna.viewlibrary.address.AddressPicker>
+    <TextView
+        android:id="@+id/text_address"
+        android:gravity="center"
+        android:text="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_choose"
+        android:text="选择地址"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

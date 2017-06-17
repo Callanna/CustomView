@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".webview.WebACtivity"></activity>
+        <activity android:name=".address.AddressActivity"></activity>
     </application>
 
 </manifest>
