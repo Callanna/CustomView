@@ -14,9 +14,9 @@
   
      封装了一下SwipeRefreshLayout,支持下拉刷新。
   
-   ![demo1](art/demo1.gif) ![demo2](art/demo2.gif)
+   ![demo1](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo1.gif) ![demo2](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo2.gif)
  
-   ![demo3](art/demo3.gif) ![demo4](art/demo4.gif)
+   ![demo3](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo3.gif) ![demo4](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo4.gif)
  
 
 ## Usage
