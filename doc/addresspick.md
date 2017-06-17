@@ -3,9 +3,8 @@
 
 * **AddressPicker**
   
-  
  
-   ![demo5](art/demo5.gif) 
+   ![demo5](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo5.gif) 
 
 ## Usage
 
