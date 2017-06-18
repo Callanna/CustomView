@@ -107,7 +107,7 @@ fWebView.getCurrentTitle（）;
 
      封装了一下SwipeRefreshLayout,支持下拉刷新。    
       
-     ```Java 
+```Java 
      
       fWebView = (PullRefreshWebView) view.findViewById(R.id.webview_recipe);
         //没有连接网络，点击默认错误界面的去设置网络的回调接口
@@ -118,11 +118,41 @@ fWebView.getCurrentTitle（）;
             }
         });
         
-        ```
+```
  
+# WebView 其他用法以及注意事项
   
- 
+* 支持播放的插件
+  
+```Java 
+    
+        fWebView.getfWebView().getSettings().setPluginState(WebSettings.PluginState.ON);
+          
+```
+* 播放网页视频后，返回或退出时，要清除数据，以免出现背后声音依旧在播放的问题
+  
+  
+```Java 
+    
+        fWebView.cleanCache（true） 
+        
+```
+* 需要设置PC的UserAgent
+  
+  
+```Java 
+    
+        fWebView.getfWebView().getSettings().setUserAgentString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36");             
+```
+* 如果支持JS,判断一下系统版本是否在4.2一下
+   
+     系统版本在4.2一下， 有WebView因addJavaScriptInterface()引起的安全问题  
+     
+     这个问题主要是因为会有恶意的js代码注入,尤其是在已经获取root权限的手机上，  
+     一些恶意程序可能会利用该漏洞安装或者卸载应用.  
+     
+     **关于详细的情况可以参考下面这篇文章：**
 
-
+    [Android WebView的Js对象注入漏洞解决方案](http://blog.csdn.net/leehong2005/article/details/11808557)
  
 
