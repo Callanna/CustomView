@@ -1,7 +1,7 @@
 # WebView的封装
 
 
-* ##CWebView
+* **CWebView**
   
     支持WebView缓存,支持JavaScript,支持手机点击返回键返回，
     监听网页加载进度，监听wifi网络状态变化自动更新，
@@ -41,15 +41,17 @@ in code:
         });
 ```
 **监听wifi网络状态变化自动刷新**
+
 ![demo1](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo1.gif)
+
 ```Java
-        fWebView.setAutoLoadOnNetStateChanged(true);
+fWebView.setAutoLoadOnNetStateChanged(true);
 ```
 
 **获得当前加载网页title**
  
 ```Java
- fWebView.getCurrentTitle（）;
+fWebView.getCurrentTitle（）;
 ```
 
 **重写destroy  避免直接调用，如果不移除父容器中的其他控件，会出现异常**
@@ -57,12 +59,14 @@ in code:
  fWebView.destroy();
  ```
 **支持返回按键返回**
+
  ![demo4](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo4.gif)
  
 **加载网页出现未知错误**
+
  ![demo2](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo2.gif)
  
-* ## ProgressWebView 
+* **ProgressWebView** 
   
       带有进度条的WebView
       ```Java
@@ -75,9 +79,10 @@ in code:
             }
         });
         ```
-* ## PullRefreshWebView
+* **PullRefreshWebView**
   
      封装了一下SwipeRefreshLayout,支持下拉刷新。
+     
    ![demo3](https://raw.githubusercontent.com/Callanna/CustomView/master/art/demo3.gif)
    
  
