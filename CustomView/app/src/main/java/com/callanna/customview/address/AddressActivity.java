@@ -32,7 +32,7 @@ public class AddressActivity extends AppCompatActivity {
         Log.d("duanyl", "onCreate: AddressActivity");
         setContentView(R.layout.activity_address);
         addressPicker =  ((AddressPicker)findViewById(R.id.address));
-       tv_address = (TextView)findViewById(R.id.text_address);
+        tv_address = (TextView)findViewById(R.id.text_address);
        btn_choose = (Button) findViewById(R.id.btn_choose);
        addressPicker.setOnAddressPickListener(new AddressPicker.OnAddressPickListener() {
             @Override

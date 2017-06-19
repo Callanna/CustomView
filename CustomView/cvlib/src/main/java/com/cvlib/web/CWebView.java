@@ -21,19 +21,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * http://blog.csdn.net/t12x3456/article/details/13769731
  */
 
-public class FWebView extends WebView {
+public class CWebView extends WebView {
     private WiifiReceiver myReceiver;
     private String ToURL = "";
     public String currentTitle = "";
-    public FWebView(Context context) {
+    public CWebView(Context context) {
         this(context, null);
     }
 
-    public FWebView(Context context, AttributeSet attrs) {
+    public CWebView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public FWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CWebView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttribute();
     }
@@ -64,7 +64,7 @@ public class FWebView extends WebView {
         getSettings().setUseWideViewPort(true);
         getSettings().setLoadWithOverviewMode(true);
         getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
-        setWebViewClient(new FWebViewClient(){
+        setWebViewClient(new CWebViewClient(){
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);

@@ -14,9 +14,9 @@ import com.cvlib.util.NetUtils;
 /**
  * Created by  Callanna on 2017/6/12.
  */
-public class FWebViewClient extends WebViewClient {
+public class CWebViewClient extends WebViewClient {
     public static final String CHAR_SET_UTF8 = "UTF-8";
-    public FWebViewClient() {
+    public CWebViewClient() {
     }
 
     @Override

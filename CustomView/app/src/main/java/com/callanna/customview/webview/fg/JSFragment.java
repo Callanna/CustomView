@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.callanna.customview.R;
 import com.cvlib.util.NetUtils;
-import com.cvlib.web.FWebView;
+import com.cvlib.web.CWebView;
 import com.cvlib.web.PullRefreshWebView;
 import com.cvlib.web.jsapi.JsClass;
 
@@ -36,7 +36,7 @@ public class JSFragment extends Fragment {
             }
         });
         fWebView.loadUrl("http://www.jianshu.com/");
-        fWebView.addLoadingStateListener(new FWebView.ILoadingStateListener() {
+        fWebView.addLoadingStateListener(new CWebView.ILoadingStateListener() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
 

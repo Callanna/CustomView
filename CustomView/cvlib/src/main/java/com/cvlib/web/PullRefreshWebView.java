@@ -25,7 +25,7 @@ public class PullRefreshWebView extends LinearLayout {
 
     private SwipeRefreshLayout refreshLayout;
 
-    private FWebView fWebView;
+    private CWebView fWebView;
 
     private String URL = "";
     private WiifiReceiver myReceiver;
@@ -49,8 +49,8 @@ public class PullRefreshWebView extends LinearLayout {
                     fWebView.loadUrl(fWebView.getOriginalUrl());
             }
         });
-        fWebView = (FWebView) mView.findViewById(R.id.webView);
-        fWebView.addLoadingStateListener(new FWebView.ILoadingStateListener() {
+        fWebView = (CWebView) mView.findViewById(R.id.webView);
+        fWebView.addLoadingStateListener(new CWebView.ILoadingStateListener() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 if (refreshLayout != null) {
@@ -101,14 +101,14 @@ public class PullRefreshWebView extends LinearLayout {
         JsApi jsApi = new JsApi(getContext(), deviceId);
         fWebView.addJavascriptInterface(jsApi, "jsApi");
     }
-    public void addLoadingStateListener(FWebView.ILoadingStateListener loadingStateListener) {
+    public void addLoadingStateListener(CWebView.ILoadingStateListener loadingStateListener) {
         if(fWebView != null){
             fWebView.addLoadingStateListener(loadingStateListener);
         }
     }
 
 
-    public FWebView getfWebView() {
+    public CWebView getfWebView() {
         if(fWebView == null){
             return null;
         }

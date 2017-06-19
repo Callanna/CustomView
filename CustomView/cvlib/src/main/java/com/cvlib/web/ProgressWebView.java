@@ -22,7 +22,7 @@ public class ProgressWebView extends LinearLayout {
     private View mView ;
     public boolean isautoloading = false;
     private ProgressBar  progressBar;
-    private FWebView fWebView;
+    private CWebView fWebView;
     private boolean isShowLoading = true;
 
     public ProgressWebView(Context context) {
@@ -37,8 +37,8 @@ public class ProgressWebView extends LinearLayout {
         super(context, attrs, defStyleAttr);
         mView = LayoutInflater.from(context).inflate(R.layout.layout_progresswebview, null);
         progressBar  = (ProgressBar) mView.findViewById(R.id.progress);
-        fWebView = (FWebView) mView.findViewById(R.id.webview);
-        fWebView.addLoadingStateListener(new FWebView.ILoadingStateListener() {
+        fWebView = (CWebView) mView.findViewById(R.id.webview);
+        fWebView.addLoadingStateListener(new CWebView.ILoadingStateListener() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
             }
@@ -83,7 +83,7 @@ public class ProgressWebView extends LinearLayout {
         JsApi jsApi = new JsApi(getContext(), deviceId);
         fWebView.addJavascriptInterface(jsApi, "jsApi");
     }
-    public FWebView getfWebView() {
+    public CWebView getfWebView() {
         if(fWebView == null){
             return null;
         }

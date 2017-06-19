@@ -30,11 +30,6 @@ public class YoukuFragment extends Fragment {
         fWebView.loadUrl("http://www.youku.com");
 
         return view;
-
-//        WebView因addJavaScriptInterface()引起的安全问题.
-//                这个问题主要是因为会有恶意的js代码注入,尤其是在已经获取root权限的手机上，一些恶意程序可能会利用该漏洞安装或者卸载应用.
-//                关于详细的情况可以参考下面这篇文章：
-//.http://blog.csdn.net/leehong2005/article/details/11808557
     }
 
     @Override
