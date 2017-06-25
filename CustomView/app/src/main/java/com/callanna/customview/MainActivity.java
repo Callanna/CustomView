@@ -30,5 +30,11 @@ public class MainActivity extends AppCompatActivity {
                 AddressActivity.startActivity(MainActivity.this);
             }
         });
+        findViewById(R.id.btn_pseekbar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PSeekBarActivity.startActivity(MainActivity.this);
+            }
+        });
     }
 }

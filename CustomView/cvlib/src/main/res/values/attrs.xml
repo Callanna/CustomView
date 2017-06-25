@@ -94,4 +94,38 @@
         <attr name="loadcolor" format="color" />
         <attr name="loadtextSize" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="PSeekBar">
+        <attr name="ps_trackcolor" format="color"></attr>
+        <attr name="ps_trackheight" format="dimension"></attr>
+        <attr name="ps_progresscolor" format="color"></attr>
+        <attr name="ps_progressheight" format="dimension"></attr>
+        <attr name="ps_thumbsize" format="dimension"></attr>
+        <attr name="ps_thumbcolor" format="color"></attr>
+        <attr name="ps_thumbdotsize" format="dimension"></attr>
+        <attr name="ps_thumbdotcolor" format="color"/>
+        <attr name="ps_isRound" format="boolean"></attr>
+        <attr name="ps_roundsize" format="dimension"/>
+        <attr name="ps_isShowBubble" format="boolean"/>
+        <attr name="ps_isHasEndText" format="boolean"/>
+        <attr name="ps_textSize" format="dimension"/>
+        <attr name="ps_textcolor" format="color"/>
+        <attr name="ps_bubblecolor" format="color"/>
+        <attr name="ps_islinetrack" format="boolean"/>
+        <attr name="ps_linesize" format="dimension"/>
+        <attr name="ps_max" format="integer"></attr>
+        <attr name="ps_min" format="integer"></attr>
+        <attr name="ps_isClickToDrag" format="boolean"/>
+        <attr name="ps_bubbledistance" format="dimension"/>
+        <attr name="ps_isColorGradient" format="boolean"/>
+        <attr name="ps_isToChangColor" format="boolean"/>
+        <attr name="ps_startcolor" format="color"/>
+        <attr name="ps_centercolor" format="color"/>
+        <attr name="ps_endcolor" format="color"/>
+        <attr name="ps_arcfulldegree" format="integer"/>
+        <attr name="ps_mode" >
+            <enum name="ps_hrect" value="1"></enum>
+            <enum name="ps_vrect" value="2"></enum>
+            <enum name="ps_circle" value="3"></enum>
+        </attr>
+    </declare-styleable>
 </resources>

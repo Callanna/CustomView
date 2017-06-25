@@ -13,6 +13,7 @@ import android.os.Message;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -397,6 +398,7 @@ public class WheelView extends View {
     private void actionMove(int move) {
         for (ItemObject item : itemList) {
             item.move(move);
+            Log.d("duanyl","y: "+item.y);
         }
         invalidate();
     }
