@@ -174,6 +174,8 @@ public class PSeekBar extends View {
         mEndColor = a.getColor(R.styleable.PSeekBar_ps_endcolor, DEFAULT_THUMB_COLOR);
         bubbleTextSize = a.getDimensionPixelSize(R.styleable.PSeekBar_ps_textSize, 20);
         bubbleTextColor = a.getColor(R.styleable.PSeekBar_ps_textcolor, Color.WHITE);
+        mProgress = a.getInteger(R.styleable.PSeekBar_ps_progress,0);
+
         a.recycle();
     }
 
@@ -295,6 +297,7 @@ public class PSeekBar extends View {
 
     public void setProgress(float progress) {
         mProgress = progress;
+        invalidate();
     }
 
     private float getProgress() {
@@ -396,6 +399,7 @@ public class PSeekBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.d("duanyl", "onDraw: ");
+        mValue = (int) ((mMax - mMin) * mProgress);
         mTextPaint.getTextBounds(String.valueOf(mValue), 0, String.valueOf(mValue).length(), mTextBounds);
         switch (mPSMode) {
             case PS_HRECT:
@@ -459,18 +463,18 @@ public class PSeekBar extends View {
         }
         canvas.drawRoundRect(rectFProgress, radiusSize, radiusSize, mProgressPaint);
         if (isLineTrack) {
-            float h = mLineTrackSize * 2 +rectFTrack.top;
-            while (h < rectFTrack.bottom) {
+            float h = mLineTrackSize * 2 +rectFTrack.bottom;
+            while (h < rectFTrack.bottom - mLineTrackSize * 2) {
                 canvas.drawLine(rectFProgress.left, h, rectFProgress.right, h, mLinePaint);
                 h += mLineTrackSize * 2;
             }
         }
 
-        if (mThumbSize != 0) {
+        if (mThumbSize > mProgressHeight) {
             canvas.drawRect(rectFProgress.left, rectFProgress.top, rectFProgress.right, rectFProgress.top - radiusSize, mProgressPaint);
             canvas.drawCircle(rectFProgress.centerX(), rectFProgress.top, mThumbSize / 2, mThumbPaint);
         }
-        if (mThumbDotSize != 0) {
+        if (mThumbDotSize >mProgressHeight) {
             canvas.drawCircle(rectFProgress.centerX(), rectFProgress.top, mThumbDotSize / 2, mThumbDotPaint);
         }
 
@@ -492,17 +496,17 @@ public class PSeekBar extends View {
         canvas.drawRoundRect(rectFProgress, radiusSize, radiusSize, mProgressPaint);
         if (isLineTrack) {
             float w = rectFTrack.left + mLineTrackSize * 2;
-            while (w < rectFTrack.right) {
+            while (w < rectFTrack.right - mLineTrackSize*2) {
                 canvas.drawLine(w, rectFProgress.top, w, rectFProgress.bottom, mLinePaint);
                 w += mLineTrackSize * 2;
             }
         }
 
-        if (mThumbSize != 0) {
+        if (mThumbSize > mProgressHeight) {
             canvas.drawRect(rectFProgress.right - radiusSize, rectFProgress.top, rectFProgress.right, rectFProgress.bottom, mProgressPaint);
             canvas.drawCircle(rectFProgress.right, rectFProgress.centerY(), mThumbSize / 2, mThumbPaint);
         }
-        if (mThumbDotSize != 0) {
+        if (mThumbDotSize > mProgressHeight) {
             canvas.drawCircle(rectFProgress.right, rectFProgress.centerY(), mThumbDotSize / 2, mThumbDotPaint);
         }
 
@@ -566,7 +570,7 @@ public class PSeekBar extends View {
     }
 
     private void updateDragging(MotionEvent event) {
-        if (rectFTrack.contains((int) event.getX(), (int) event.getY())) {
+        if (rectFTrack.contains(event.getX(),event.getY())) {
             switch (mPSMode) {
                 case PS_CIRCLE:
                     //判断拖动时是否移出去了
@@ -586,7 +590,6 @@ public class PSeekBar extends View {
                     moveMarker((int) (mDownX - mStartX));
                     break;
             }
-            mValue = (int) ((mMax - mMin) * mProgress);
             postInvalidate();
             if (mPublicChangeListener != null) {
                 mPublicChangeListener.onProgressChanged(PSeekBar.this, value, isDragging);
@@ -659,7 +662,7 @@ public class PSeekBar extends View {
         float distance = calDistance(currentX, currentY, rectFProgress.centerX(), rectFProgress.centerY());
         float degree = calDegreeByPosition(currentX, currentY);
         return distance > (rectFProgress.width() - mProgressHeight - 5) / 2 && distance < (rectFProgress.width() + mProgressHeight + 5) / 2
-                && (degree >= -8 && degree <= mArcFullDegree + 8);
+                && (degree >= -2 && degree <= mArcFullDegree + 2);
     }
 
 
@@ -699,9 +702,9 @@ public class PSeekBar extends View {
             windowManagerParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
             windowManagerParams.gravity = Gravity.START | Gravity.TOP;
             // 以屏幕左下角为原点，设置x、y初始值，使按钮定位在右下角
-            Log.d("duanyl", "initWindow: " + anchor.getLeft() + "," + anchor.getTop());
-            windowManagerParams.x = anchor.getLeft();
-            windowManagerParams.y = anchor.getTop() + mBubbleDistance;
+            Log.d("duanyl", "initWindow: " + anchor.getLeft() + "," + anchor.getTop()+","+((View)anchor.getParent()).getTop());
+            windowManagerParams.x = anchor.getLeft()+((View)anchor.getParent()).getLeft();
+            windowManagerParams.y = anchor.getTop()+((View)anchor.getParent()).getTop() + mBubbleDistance;
             // 设置悬浮窗口长宽数据
             windowManagerParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
             windowManagerParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;

@@ -122,10 +122,46 @@
         <attr name="ps_centercolor" format="color"/>
         <attr name="ps_endcolor" format="color"/>
         <attr name="ps_arcfulldegree" format="integer"/>
+        <attr name="ps_progress" format="integer"></attr>
         <attr name="ps_mode" >
             <enum name="ps_hrect" value="1"></enum>
             <enum name="ps_vrect" value="2"></enum>
             <enum name="ps_circle" value="3"></enum>
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PasswordView">
+        <attr name="passwordLength" format="integer" />
+        <attr name="passwordPadding" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="cursorFlashTime" format="integer" />
+        <attr name="isCursorEnable" format="boolean" />
+        <attr name="cipherEnable" format="boolean" />
+        <attr name="cursorColor" format="color" />
+        <attr name="mode" format="enum">
+            <enum name="underline" value="0" />
+            <enum name="rect" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="XNumberKeyboardView">
+
+        <!-- 删除按键的图标 -->
+        <attr name="xnkv_deleteDrawable" format="reference" />
+
+        <!-- 删除按键图标的宽度 -->
+        <attr name="xnkv_deleteWidth" format="dimension|reference" />
+
+        <!-- 删除按键图标的高度 -->
+        <attr name="xnkv_deleteHeight" format="dimension|reference" />
+
+        <!-- 删除按键图标的颜色 -->
+        <attr name="xnkv_deleteBackgroundColor" format="color|reference" />
+
+    </declare-styleable>
+    <declare-styleable name="PrecentRelativeLayout">
+        <attr name="layout_widthPrecent" format="float"></attr>
+        <attr name="layout_heightPrecent" format="float"></attr>
     </declare-styleable>
 </resources>

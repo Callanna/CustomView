@@ -52,7 +52,7 @@
    <LinearLayout
        android:orientation="horizontal"
        android:layout_width="match_parent"
-       android:layout_height="200dp">
+       android:layout_height="300dp">
        <com.cvlib.progress.PSeekBar
            android:id="@+id/seektwo"
            android:layout_marginTop="20dp"
@@ -101,12 +101,13 @@
            app:ps_startcolor="@color/colorPrimary"
            app:ps_centercolor="@color/colorPrimaryDark"
            app:ps_endcolor="@color/colorAccent"/>
+       <com.cvlib.progress.PSeekBar
+           android:id="@+id/seekthree"
+           android:layout_marginTop="20dp"
+           app:ps_mode="ps_circle"
+           android:layout_width="100dp"
+           android:layout_height="100dp" />
    </LinearLayout>
 
-    <com.cvlib.progress.PSeekBar
-        android:id="@+id/seekthree"
-        android:layout_marginTop="20dp"
-        app:ps_mode="ps_circle"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+
 </LinearLayout>

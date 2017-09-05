@@ -19,6 +19,7 @@
         <activity android:name=".webview.WebACtivity" />
         <activity android:name=".address.AddressActivity" />
         <activity android:name=".PSeekBarActivity"></activity>
+        <activity android:name=".PWDActivity"></activity>
     </application>
 
 </manifest>
