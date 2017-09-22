@@ -3,4 +3,10 @@
 
     <style name="Widget_PSeekBar" parent="android:Widget">
     </style>
+    <declare-styleable name="MaterialImageView">
+        <attr name="shadow_size" format="integer" />
+        <attr name="radius_size" format="integer" />
+        <attr name="use_white_bg" format="boolean"/>
+        <attr name="src" format="reference"></attr>
+    </declare-styleable>
 </resources>

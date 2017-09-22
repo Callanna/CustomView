@@ -8,4 +8,5 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <color name="tran">#00000000</color>
 </resources>

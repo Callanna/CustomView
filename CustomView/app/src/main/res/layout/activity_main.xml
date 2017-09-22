@@ -29,4 +29,13 @@
         android:text="PWD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <com.cvlib.CardView
+        app:src="@mipmap/ic_music_bg"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </com.cvlib.CardView>
+
+
 </LinearLayout>

@@ -10,6 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,7 +35,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //compile 'com.callanna:viewlibrary:1.0.0'
+    //compile 'com.cvlib:cvlib:1.0.1'
     compile project(':cvlib')
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
