@@ -21,7 +21,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * http://blog.csdn.net/t12x3456/article/details/13769731
  */
 
-public class CWebView extends WebView {
+public class CWebView extends  com.cvlib.web.webkit.WebView{
     private WiifiReceiver myReceiver;
     private String ToURL = "";
     public String currentTitle = "";
@@ -30,13 +30,9 @@ public class CWebView extends WebView {
     }
 
     public CWebView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs );
     }
 
-    public CWebView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initAttribute();
-    }
 
     private void initAttribute() {
         setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
@@ -88,7 +84,7 @@ public class CWebView extends WebView {
         });
         setWebChromeClient(new WebChromeClient(){
 
-            @Override
+                        @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
                 for(ILoadingStateListener loadingStateListener: loadingStateListeners) {
