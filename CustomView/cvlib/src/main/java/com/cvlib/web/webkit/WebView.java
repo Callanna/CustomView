@@ -50,9 +50,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>What's more, it brings the ability of access native action bar by web. You can simply do it
  * in you html meta content as following:
  *
- * <pre>
- *     <meta data-owner="small" name="[$pos]-bar-item" content="type=[$type],onclick=[$handler]()">
- * </pre>
  *
  * For more details see <a href="https://github.com/wequick/Small/wiki/Web/Navigation-bar">Navigation bar</a>.
  */
@@ -583,9 +580,6 @@ public class WebView extends android.webkit.WebView {
         });
     }
 
-    /**
-     * @hide Only for Small API
-     */
     public static void registerJsHandler(String method, JsHandler handler) {
         if (method == null || handler == null) return;
 
@@ -770,9 +764,7 @@ public class WebView extends android.webkit.WebView {
 
     private static WebViewClient sWebViewClient;
 
-    /**
-     * @hide Only for Small API
-     */
+
     public static void setWebViewClient(WebViewClient listener) {
         sWebViewClient = listener;
     }

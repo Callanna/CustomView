@@ -31,12 +31,14 @@ android {
             dirs 'libs'
         }
     }
+
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //compile 'com.cvlib:cvlib:1.0.1'
-    compile project(':cvlib')
+    compile 'com.cvlib:cvlib:1.0.4'
+//    compile project(':cvlib')
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

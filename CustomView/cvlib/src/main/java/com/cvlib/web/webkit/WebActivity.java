@@ -40,7 +40,7 @@ import java.util.HashMap;
  * <p>The content view of this class is a WebView with an url passed by the launcher.
  *
  * <p>For the ability of initialize native navigation bar by html content, we use the
- * {@link AppCompatActivity} to provide a common style action bar.
+ *
  *
  * @see WebView
  */

@@ -19,25 +19,20 @@ package com.cvlib.web.webkit;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-/**
- * This class is a slice version of {@link android.webkit.WebViewClient}.
- */
+
 public abstract class WebViewClient {
     /**
      * @param context the activity of the WebView
-     * @see android.webkit.WebViewClient#onPageStarted(android.webkit.WebView, String, Bitmap)
      */
     public void onPageStarted(Context context, WebView view, String url, Bitmap favicon) {}
 
     /**
      * @param context the activity of the WebView
-     * @see android.webkit.WebViewClient#onPageFinished(android.webkit.WebView, String)
      */
     public void onPageFinished(Context context, WebView view, String url) {}
 
     /**
      * @param context the activity of the WebView
-     * @see android.webkit.WebViewClient#onReceivedError(android.webkit.WebView, int, String, String)
      */
     public void onReceivedError(Context context, WebView view, int errorCode,
                                 String description, String failingUrl) {}

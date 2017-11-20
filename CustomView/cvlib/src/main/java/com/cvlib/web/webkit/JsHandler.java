@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * This class do the native stuff for the registered Javascript method.
- *
- * @see net.wequick.small.Small#registerJsHandler(String, JsHandler)
  */
 public interface JsHandler {
     void handle(Context context, Map<String, Object> parameters, JsResult result);

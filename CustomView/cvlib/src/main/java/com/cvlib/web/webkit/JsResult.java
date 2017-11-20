@@ -27,7 +27,7 @@ public class JsResult {
      * Callback interface, implemented by the WebViewClient implementation to receive
      * notifications when the JavaScript result represented by a JsResult instance has finished.
      *
-     * @hide Only for use by WebViewClient implementations
+     *
      */
     public interface OnFinishListener {
         void finish(Object result);
@@ -35,9 +35,6 @@ public class JsResult {
 
     private OnFinishListener mFinishListener;
 
-    /**
-     * @hide Only for use by WebViewClient implementations
-     */
     public JsResult(OnFinishListener listener) {
         mFinishListener = listener;
     }

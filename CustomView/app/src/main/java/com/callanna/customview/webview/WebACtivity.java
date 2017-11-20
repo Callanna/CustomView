@@ -17,7 +17,7 @@ import com.callanna.customview.R;
 import com.callanna.customview.webview.fg.JSFragment;
 import com.callanna.customview.webview.fg.WeiXinFragment;
 import com.callanna.customview.webview.fg.YoukuFragment;
-import com.cvlib.CustomIndicator;
+import com.cvlib.indicator.CustomIndicator;
 import com.cvlib.util.NetUtils;
 
 import java.util.ArrayList;

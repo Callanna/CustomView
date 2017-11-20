@@ -1,4 +1,4 @@
-package com.cvlib;
+package com.cvlib.indicator;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

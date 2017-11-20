@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+apply from: 'bintray.gradle'
 // 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
-version = "1.0.2"
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -12,6 +10,18 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
     }
     lintOptions {
         abortOnError false
@@ -25,88 +35,13 @@ android {
 }
 
 dependencies {
-
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     provided 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.google.code.gson:gson:2.7'
+    provided 'com.android.support:cardview-v7:25.3.1'
+    provided 'com.google.code.gson:gson:2.7'
     //MaterialDesignLibrary  兼容低版本
-    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    provided 'com.github.navasmdc:MaterialDesign:1.5@aar'
     //gitView
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.0.+'
+    provided 'pl.droidsonroids.gif:android-gif-drawable:1.0.+'
 
-    compile 'com.github.rey5137:material:1.2.4'
-}
-
-//
-def siteUrl = 'https://github.com/Callanna/CustomView' // 项目的主页
-def gitUrl = 'https://github.com/Callanna/CustomView.git' // Git仓库的url
-group = "com.cvlib" //一般填你唯一的包名
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                // Add your description here
-                description '  Custom View for Project'
-                name 'Android Commonly used Custom View'  //项目描述
-                url siteUrl
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer { // 开发者信息
-                        id 'callanna'
-                        name 'callanna'
-                        email 'callanna1023@gmail.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-task javadoc(type: Javadoc) {
-    options.encoding = 'UTF-8'
-    //options.charSet 'UTF-8'
-    source = 'src/main/java'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-Properties properties = new Properties()
-// 加载本地配置
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "android-custom-view"  //发布到Bintray的那个仓库里，默认账户有四个库，我们这里上传到maven库
-        name = "cvlib"  //发布到Bintray上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
+    provided 'com.github.rey5137:material:1.2.4'
 }
